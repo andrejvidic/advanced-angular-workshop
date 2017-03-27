@@ -4,12 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app-activity-list',
-  template: `
-    <p>
-      activity-list Works!
-    </p>
-  `,
+    selector: 'app-activity-list',
+    template: `
+<div *ngFor="let activity of activities | async" class="activity">
+  <h2>{{activity.title}}</h2>
+  <p>{{activity.description}}</p>
+</div>
+ `,
   styles: []
 })
 export class ActivityListComponent {
