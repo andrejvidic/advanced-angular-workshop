@@ -9,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class ActivityListComponent implements OnInit {
+export class ActivityListComponent {
 
-  constructor() { }
+    activities: Observable<any>;
+    
+    constructor(http: Http) {
+        this.activities =
+            http.get('https://melbourne-things-to-do.firebaseio.com/activities.json')
+            .map(res => res.json());
+    }
 
   ngOnInit() {
   }
